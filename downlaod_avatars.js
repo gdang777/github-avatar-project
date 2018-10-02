@@ -22,8 +22,13 @@ function getRepoContributors(repoOwner, repoName, handleAvatarURL){
   });
 }
 
-var fetchAvatarURL = function(aURL){
-    console.log(aURL);
+var fetchAvatarURL = function(avatar_url, filepath){
+    var options = {
+        url:
+    }
+request.get(avatar_url)
+       .on('error', function (err) {
+         throw err;
 }
 
 
