@@ -29,7 +29,23 @@ function getRepoContributors(repoOwner, repoName, handleAvatarURL) {
 var fetchAvatarURL = function(avatar_url, filepath){
 
  request.get(avatar_url)
-        .pipe(fs.createWriteStream(filepath));
+
+    .on('error', function(err) {
+    console.log('ERROR! ERROR! ERROR!')
+    })
+
+    .on('response', function(response) {
+    console.log('Response Status Code: ', response.statusCode);
+    console.log('Status Message: ', response.statusMessage);
+    console.log('Downloading image...');
+
+    })
+
+    .on('end', function() {
+    console.log('Download complete.');
+    })
+
+    .pipe(fs.createWriteStream(filepath));
 
 }
 
